@@ -83,9 +83,10 @@ export type UseSelector<State, Selected> = (
  * e.g.
  * export const useSelector: TypedUseSelector<State> = _useSelector;
  */
-export type TypedUseSelector<State> = <Selected>(
-  selector: (state: State) => Selected
-) => Selected;
+export type TypedUseSelector<TState> = <TSelected>(
+  selector: (state: TState) => TSelected,
+  equalityFn?: (left: TSelected, right: TSelected) => boolean
+) => TSelected;
 
 type EqualityFn = (a: any, b: any) => any;
 
